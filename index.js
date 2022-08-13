@@ -63,28 +63,16 @@ async function run() {
   console.log('[ACTION] Requesting data via HTTPS GET from https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/maven-metadata.xml')
 
   await parseStringPromise(text).then((result) => {
-    let branch = '1.15';
-
-    if(minecraftVersion === '1.14.4'){
-      branch = '1.14';
-    } else if (minecraftVersion.startsWith('20w')) {
-      branch = '1.16';
-    }
-
     const versions = result.metadata.versioning[0];
-
-    if(version === 'latest')
-      fabricVersion = versions.latest;
-    else {
       let latestVersion = versions.release;
 
-      for(const version of versions.versions[0].version) {
-        if(version.endsWith(branch))
+        for (const version of versions.versions[0].version) {
+            if (version.endsWith(minecraftVersion)) {
           latestVersion = version;
       }
+        }
 
       fabricVersion = latestVersion;
-    }
 
     console.log('[ACTION] Fabric API version retrieved! Version ' + fabricVersion);
   }).catch((err) => {
