@@ -16,5 +16,5 @@ inputs:
     description: 'Whether the action should run the server test. Useful for client only mods.'
 outputs: {}
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
