@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const fetch = require('cross-fetch');
 const parseStringPromise = require('xml2js').parseStringPromise;
 const core = require('@actions/core');
 const fs = require('fs');
